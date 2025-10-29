@@ -8,7 +8,6 @@
 // Correo: alu0101743011@ull.edu.es
 // Fecha: 04/11/2025
 
-
 #include <fstream>
 #include <iostream>
 #include <limits>
@@ -84,7 +83,7 @@ void Gramatica::FormaNormalChomsky() {
 		if (iterador->second.size() >= 2) {
 			for (char c : iterador->second) {
 				if (islower(c)) {
-					Sustituir(c, simbolo_no_terminal_);
+					SustituirTerminales(c, simbolo_no_terminal_);
 					conjunto_no_terminal_.insert(simbolo_no_terminal_);
 					simbolo_no_terminal_++;					
 				}
@@ -93,9 +92,19 @@ void Gramatica::FormaNormalChomsky() {
 	}		
 
 	// Símbolos no terminales
+	for (auto iterador = producciones_.begin(); iterador != producciones_.end();) { 
+		if (iterador->second.size() >= 3) {
+			std::string nuevo_no_terminal = iterador->second.substr(iterador->second.size() - 2, 2);
+			iterador->second.replace(iterador->second.size() - 2, 2, std::string(1, simbolo_no_terminal_));
+			producciones_.insert({simbolo_no_terminal_, nuevo_no_terminal});
+			simbolo_no_terminal_++;
+		}
+		if (iterador->second.size() < 3) iterador++;
+	}	
 }
 
-void Gramatica::Sustituir(char antiguo_terminal, char nuevo_terminal) {
+void Gramatica::SustituirTerminales(char antiguo_terminal, char nuevo_terminal) {
+	producciones_.insert({nuevo_terminal, std::string(1, antiguo_terminal)});	
 	for (auto iterador = producciones_.begin(); iterador != producciones_.end(); iterador++) {
 		if (iterador->second.size() >= 2) {
 			for (size_t i = 0; i < iterador->second.size(); i++) {
@@ -105,5 +114,4 @@ void Gramatica::Sustituir(char antiguo_terminal, char nuevo_terminal) {
 			}
 		}
 	}
-	producciones_.insert({nuevo_terminal, std::string(1, antiguo_terminal)});		
 }

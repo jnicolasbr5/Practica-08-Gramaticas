@@ -11,22 +11,21 @@
 #ifndef GRAMATICA_H
 #define GRAMATICA_H
 
-
 #include <fstream>
 #include <map>
 #include <set>
 
 class Gramatica {
 	public:
-	Gramatica() = default;
+		Gramatica() = default;
 
-	void Read(std::ifstream& archivo_entrada);
-	void Write(std::ofstream& archivo_salida);
-	bool Comprobacion();
-	void FormaNormalChomsky();
+		void Read(std::ifstream& archivo_entrada);
+		void Write(std::ofstream& archivo_salida);
+		bool Comprobacion();
+		void FormaNormalChomsky();
 
 	private:
-		void Sustituir(char ant_terminal, char new_terminal);
+		void SustituirTerminales(char ant_terminal, char new_terminal);
 		int num_terminales_;
 		int num_no_terminales_;
 		int num_producciones_;

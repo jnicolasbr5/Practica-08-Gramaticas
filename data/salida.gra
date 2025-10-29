@@ -8,12 +8,16 @@ D
 S
 X
 Y
-15
+19
 C a
 D b
-S CXDX
-S CDX
-S CXD
+E DX
+F XE
+G DX
+H XD
+S CF
+S CG
+S CH
 S CD
 X CY
 X DY

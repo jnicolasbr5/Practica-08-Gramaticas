@@ -7,14 +7,10 @@
 // Autor: Juan Nicolás Becerra Rogatinscaia
 // Correo: alu0101743011@ull.edu.es
 // Fecha: 29/10/2025
-// Referencias:
-// Referencia -> 
 // Historial de revisiones:
 // 29/10/2025 - Creación (primera versión) del código
-// 15/10/2025 - Segunda versión del código -> 
 // 
-// 16/10/2025 - Tercera versión del código -> 
-// 
+// 30/10/2025 - Segunda versión del código -> 
 
 // ./Grammar2CNF ../data/entrada.gra ../data/salida.gra
 
