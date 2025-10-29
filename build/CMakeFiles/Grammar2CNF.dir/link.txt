@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/Grammar2CNF.dir/src/Grammar2CNF.cc.o CMakeFiles/Grammar2CNF.dir/src/gramatica.cc.o -o Grammar2CNF 
