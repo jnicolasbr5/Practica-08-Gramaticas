@@ -8,9 +8,10 @@
 // Correo: alu0101743011@ull.edu.es
 // Fecha: 29/10/2025
 // Historial de revisiones:
-// 29/10/2025 - Creación (primera versión) del código
-// 
+// 29/10/2025 - Creación (primera versión) del código ->
+// https://github.com/jnicolasbr5/Practica-08-Gramaticas/tree/dia1
 // 30/10/2025 - Segunda versión del código -> 
+// https://github.com/jnicolasbr5/Practica-08-Gramaticas/tree/dia2
 
 // ./Grammar2CNF ../data/entrada.gra ../data/salida.gra
 
