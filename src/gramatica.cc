@@ -81,10 +81,8 @@ bool Gramatica::Comprobacion() {
 			std::cerr << "La gramática no está simplificada" << std::endl;
 			return false;
 		}
-	}
 
-	// Comprobar producciones vacías
-	for (auto iterador = producciones_.begin(); iterador != producciones_.end(); iterador++) {
+		// Comprobar producciones unitarias
 		if (iterador->second.size() == 1 && isupper(iterador->second[0])) {
 			std::cerr << "ERROR: Producción unitaria detectada" << std::endl;
 			return false;
