@@ -15,12 +15,25 @@
 #include <map>
 #include <set>
 
+/**
+ * @brief Representa la gramática
+ * 
+ * Contiene el alfabeto de símbolos terminales, el conjunto de los símbolos no terminales 
+ * y un multimap con las producciones.	
+ * 
+ * Estructura de datos principal:
+ * - std::set<char> - almacena los símbolos terminales y no terminales
+ * - std::multimao<char, std::string> - almacena las producciones
+ */
 class Gramatica {
 	public:
 		Gramatica() = default;
 
+		// E/S
 		void Read(std::ifstream& archivo_entrada);
 		void Write(std::ostream& os);
+
+		// Algoritmos
 		bool Comprobacion();
 		void FormaNormalChomsky();
 
@@ -50,4 +63,5 @@ class Gramatica {
 };
 
 std::ostream& operator<<(std::ostream& os, Gramatica grammar);
+
 #endif
