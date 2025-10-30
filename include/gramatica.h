@@ -20,20 +20,34 @@ class Gramatica {
 		Gramatica() = default;
 
 		void Read(std::ifstream& archivo_entrada);
-		void Write(std::ofstream& archivo_salida);
+		void Write(std::ostream& os);
 		bool Comprobacion();
 		void FormaNormalChomsky();
 
 	private:
 		void SustituirTerminales(char ant_terminal, char new_terminal);
+		
+		// Número de símbolos terminales de la gramática inicial
 		int num_terminales_;
+		
+		// Número de símbolos no terminales de la gramática inicial
 		int num_no_terminales_;
+		
+		// Número de producciones de la gramática inicial
 		int num_producciones_;
+		
+		// Representa el próximo símbolo no terminal que va a ser añadido a la Forma Normal de Chomsky
 		char simbolo_no_terminal_ = 'C';
 
+		// Representa el alfabeto de símbolos terminales
 		std::set<char> alfabeto_;
+
+		// Representa el conjunto de símbolos no terminales
 		std::set<char> conjunto_no_terminal_;
+
+		// Representa las producciones de la gramática char -> std::string
 		std::multimap<char, std::string> producciones_;
 };
 
+std::ostream& operator<<(std::ostream& os, Gramatica grammar);
 #endif
