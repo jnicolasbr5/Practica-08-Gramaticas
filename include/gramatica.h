@@ -37,7 +37,10 @@ class Gramatica {
 		bool Comprobacion();
 		void FormaNormalChomsky();
 
-	private:
+		// Modificacion
+		bool IsInChomskyNormalForm() const;
+		
+		private:
 		void SustituirTerminales(char ant_terminal, char new_terminal);
 		
 		// Número de símbolos terminales de la gramática inicial
@@ -50,7 +53,7 @@ class Gramatica {
 		int num_producciones_;
 		
 		// Representa el próximo símbolo no terminal que va a ser añadido a la Forma Normal de Chomsky
-		char simbolo_no_terminal_ = 'C';
+		char simbolo_no_terminal_ = 'A';
 
 		// Representa el alfabeto de símbolos terminales
 		std::set<char> alfabeto_;

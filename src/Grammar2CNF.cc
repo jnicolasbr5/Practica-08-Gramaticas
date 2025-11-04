@@ -71,9 +71,13 @@ int main (int argc, char* argv[]) {
 	std::ifstream archivo_entrada(argv[1]);
 	if (!archivo_entrada.is_open()) MostrarError(1);
 	std::ofstream archivo_salida(argv[2]);
-  if (!archivo_salida.is_open()) MostrarError(1);
+  	if (!archivo_salida.is_open()) MostrarError(1);
 	Gramatica grammar;
 	grammar.Read(archivo_entrada);
+	if(grammar.IsInChomskyNormalForm()) {
+		std::cerr << "La gramática ya está en Forma Normal de Chomsky" << std::endl;
+		return 0;
+	}
 	if(!grammar.Comprobacion()) return 1;
 	grammar.FormaNormalChomsky();
 	archivo_salida << grammar << std::endl;

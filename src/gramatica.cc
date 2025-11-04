@@ -67,6 +67,52 @@ void Gramatica::Write(std::ostream& os) {
 	}
 }
 
+bool Gramatica::IsInChomskyNormalForm() const {
+	bool cadena_vacia = false;
+
+	for (auto iterador = producciones_.begin(); iterador != producciones_.end(); iterador++) {
+		// n > 2
+		if (iterador->second.size() > 2) return false;
+
+		// Si n = 2; deben ser no terminales
+		if (iterador->second.size() == 2) {
+			for (char c : iterador->second) {
+				if (islower(c)) return false;
+			}
+		}
+
+		if (iterador->second.size() == 1) {
+			// Si existe cadena vacía, solo puede estar en S
+			if (iterador->second == "&" && iterador->first == 'S') {
+				cadena_vacia = true;
+			}
+
+			// Si existe cadena vacía y no está en S
+			if (iterador->second == "&" && iterador->first != 'S') {
+				return false;
+			}
+
+			// Si n = 1, debe ser terminal
+			for (char d : iterador->second) {
+				if(isupper(d)) return false;
+			}
+			
+			// Comprobar que la cadena vacia solo este en s
+			if (cadena_vacia) {
+				for (auto it = producciones_.begin(); it != producciones_.end(); it++) {
+					if (it->first != 'S') {
+						for (char e : it->second) {
+							if (e == 'S') return false;
+						}
+					}
+				}
+			}
+		}
+	}
+	return true;
+}
+
+
 /**
  * @brief Comprueba que la gramática no contenga producciones vacías ni unitarias
  * 
